@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     browser = EspnBrowser()
 
-    browser.open_page('https://www.espn.com.co/#')
+    browser.open_page('https://www.espn.com.co')
     time.sleep(3)
 
     browser.login_espn(EspnSecret.email_espn, EspnSecret.password_espn)
