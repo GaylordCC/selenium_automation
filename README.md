@@ -11,4 +11,5 @@ Python 3.12.4
 pip install -r requirements.txt
 
 # Run python code in Power Shell
-python fantasyfootballdraft.py
+python fantasy_football_autodraft.py
+python linkedin.py
