@@ -72,6 +72,95 @@ class EspnBrowser:
         self.switch_to_default_content()
 
 
+    def search_nav_bar(self):
+        try:
+            print("Buscando el enlace de Fútbol en la barra de navegación")
+            # Usa XPATH para seleccionar el enlace de fútbol
+            football_link = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/futbol/') and .//span[contains(text(), 'Fútbol')]]"))
+            )
+            football_link.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el enlace de Fútbol: {e}")
+
+    def search_fantasy_link(self):
+        try:
+            print("Buscando el enlace de ESPN Fantasy Fútbol")
+            fantasy_link = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//a[contains(@data-track-nav_item, 'espn fantasy fútbol')]"))
+            )
+            fantasy_link.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el enlace de ESPN Fantasy Fútbol: {e}")
+
+    def click_mock_draft_now(self):
+        try:
+            print("Buscando el enlace 'Mock Draft Now'")
+            mock_draft_link = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='main-content layout-dbc one-feed']//section[@class='col-three']//div[@class='fantasySignup__footer']//a[contains(text(), 'Mock Draft Now')]"))
+            )
+            mock_draft_link.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el enlace 'Mock Draft Now': {e}")
+
+    def click_join_league(self):
+        try:
+            print("Buscando el enlace 'Join a League'")
+            join_league_link = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='jsx-3009934533 mock-draft-lobby-container']//a[contains(text(), 'Join a League')]"))
+            )
+            join_league_link.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el enlace 'Join a League': {e}")
+
+    def click_join_public_league(self):
+        try:
+            print("Buscando el botón 'Join a Public League'")
+            join_public_league_button = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='onboarding-actions-wrapper']//section[contains(@class, 'Onboarding-Action-Item')]//button[contains(text(), 'Join a Public League')]"))
+            )
+            join_public_league_button.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el botón 'Join a Public League': {e}")
+
+    def click_join_a_league(self):
+        try:
+            print("Buscando el botón 'Join a League'")
+            join_a_league_button = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='Wrapper Card__Content KonaForm__Card__Content']//button[contains(text(), 'Join a League')]"))
+            )
+            join_a_league_button.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el botón 'Join a League': {e}")
+
+    def click_join_this_league(self):
+        try:
+            print("Buscando el botón 'Join This League'")
+            join_this_league_button = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='jsx-693053285 waiting-room_container']//button[contains(text(), 'Join This League')]"))
+            )
+            join_this_league_button.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el botón 'Join This League': {e}")
+
+    def click_edit_pre_draft_rankings(self):
+        try:
+            print("Buscando el enlace 'Edit Pre-Draft Rankings'")
+            edit_pre_draft_rankings_link = WebDriverWait(self.browser, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'Edit Pre-Draft Rankings')]"))
+            )
+            edit_pre_draft_rankings_link.click()
+            time.sleep(3)
+        except Exception as e:
+            print(f"Error al intentar hacer clic en el enlace 'Edit Pre-Draft Rankings': {e}")
+
 if __name__ == '__main__':
     from espn_secret import EspnSecret
 
@@ -81,5 +170,31 @@ if __name__ == '__main__':
     time.sleep(3)
 
     browser.login_espn(EspnSecret.email_espn, EspnSecret.password_espn)
-    print(EspnSecret.email_espn)
     time.sleep(18)
+
+    browser.search_nav_bar()
+    time.sleep(3)
+
+    browser.search_fantasy_link()
+    time.sleep(3)
+
+    browser.click_mock_draft_now()
+    time.sleep(3)
+
+    browser.click_join_league()
+    time.sleep(3)
+
+    browser.click_join_public_league()
+    time.sleep(3)
+
+    browser.click_join_a_league()
+    time.sleep(3)
+
+    browser.login_espn(EspnSecret.email_espn, EspnSecret.password_espn)
+    time.sleep(2)
+
+    browser.click_join_this_league()
+    time.sleep(3)
+
+    browser.click_edit_pre_draft_rankings()
+    time.sleep(3)
