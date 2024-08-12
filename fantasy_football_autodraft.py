@@ -161,40 +161,5 @@ class EspnBrowser:
         except Exception as e:
             print(f"Error al intentar hacer clic en el enlace 'Edit Pre-Draft Rankings': {e}")
 
-if __name__ == '__main__':
-    from espn_secret import EspnSecret
-
-    browser = EspnBrowser()
-
-    browser.open_page('https://www.espn.com.co')
-    time.sleep(3)
-
-    browser.login_espn(EspnSecret.email_espn, EspnSecret.password_espn)
-    time.sleep(18)
-
-    browser.search_nav_bar()
-    time.sleep(3)
-
-    browser.search_fantasy_link()
-    time.sleep(3)
-
-    browser.click_mock_draft_now()
-    time.sleep(3)
-
-    browser.click_join_league()
-    time.sleep(3)
-
-    browser.click_join_public_league()
-    time.sleep(3)
-
-    browser.click_join_a_league()
-    time.sleep(3)
-
-    browser.login_espn(EspnSecret.email_espn, EspnSecret.password_espn)
-    time.sleep(2)
-
-    browser.click_join_this_league()
-    time.sleep(3)
-
-    browser.click_edit_pre_draft_rankings()
-    time.sleep(3)
+    def get_current_url(self) -> str:
+        return self.browser.current_url
